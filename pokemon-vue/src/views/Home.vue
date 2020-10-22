@@ -1,61 +1,28 @@
 <template>
   <div class="home">
-   <v-container 
-      align="center"
-      justify="center">
-
-
-      <v-container
-       class="white lighten-5 mb-1"
-      >
-        <v-row
-          no-gutters
-          style="height: 45px;"
-          justify="center"
-        >
+   <v-container  align="center" justify="center">
+    <v-container class="white lighten-5 mb-1">
+      <v-row  no-gutters style="height: 45px;" justify="center">
         <h1>Poke Busqueda</h1>
-        </v-row>
-    </v-container>
-    
-
-    <v-container
-      
-      class="white lighten-5 mb-6"
-      
-    >
-      <v-row
-        
-        no-gutters
-        style="height: 100px;"
-      >
-     <v-text-field
-      v-model="busqueda"
-      class="centered-input text--darken-  v-text-field" 
-      mt="0"
-      hide-details="auto"
-      
-    >   </v-text-field>
-
-      <v-btn v-on:click="FiltrarPokemons(busqueda)" large color="info">Buscar</v-btn>
       </v-row>
-    <v-container justify="center">
-
-     <a v-if="!seleccionado " v-on:click="Seleccionar(item.url)" style="float:left" v-for="(item,index) in Pokemons" :key="index">
-      <img :id="index"  :src="''+item.image"   >
-      <br>
-      <a  justify="center" >{{item.name}}</a>
-     </a>
-    
-    <Card v-if="seleccionado"></Card>
-    </v-container>
-        
-      
     </v-container>
 
-   <!-- <p>{{ SinglePokemon }}</p> -->
-    </v-container>
+    <v-container class="white lighten-5 mb-6">
+      <v-row no-gutters style="height: 100px;" >
+        <v-text-fieldv-model="busqueda"class="centered-input text--darken-  v-text-field"mt="0" hide-details="auto"></v-text-field>
+        <v-btn v-on:click="FiltrarPokemons(busqueda)" large color="info">Buscar</v-btn>
+      </v-row>
+      <v-container justify="center">
+        <a v-if="!seleccionado" v-on:click="Seleccionar(item.url)" style="float:left" v-for="(item,index) in Pokemons" :key="index">
+          <img :src="''+item.image">
+          <br>
+          <a justify="center">{{item.name}}</a>
+        </a>
     
-<!-- <pre>{{$data}}</pre> -->
+        <Card v-if="seleccionado"></Card>
+      </v-container>
+    </v-container>
+   </v-container>
   </div>
 </template>
 
@@ -78,7 +45,7 @@ export default {
   data() {
     return {
       busqueda: "",
-      // seleccionado:false
+     
     };
   },
   methods: {
@@ -86,7 +53,7 @@ export default {
     Seleccionar: function(url) {
       this.GetSinglePokemon(url) ;
       this.seleccionado = true;
-      console.log("seleccionado");
+      
     }
   },
   computed: {
