@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     Pokemons: [],
+    BaseUrl: 'http://localhost:25575/api',
     SinglePokemon: [],
     seleccionado: false,
     result: { url: '', name: '', image: '' },
@@ -30,7 +31,7 @@ export default new Vuex.Store({
   actions: {
     GetRootObject({ commit, state, dispatch }) {
       const Pokemons = [];
-      axios.get('http://localhost:25575/api/Values/GetAll', null, state.optionAxios)
+      axios.get(state.BaseUrl + '/Pokemon/GetAll', null, state.optionAxios)
         .then((response) => {
 
           response.data.results.forEach((value, index) => {
@@ -41,7 +42,7 @@ export default new Vuex.Store({
     },
     FiltrarPokemons({ commit, state }, clave) {
       const Pokemons = [];
-      axios.get('http://localhost:25575/api/Values/Filtrar/' + clave, state.optionAxios)
+      axios.get(state.BaseUrl + '/Pokemon/Filtrar/' + clave, state.optionAxios)
         .then((response) => {
 
           response.data.results.forEach((value, index) => {
@@ -56,7 +57,7 @@ export default new Vuex.Store({
       let objeto = { url: url, name: '', image: '' };
       objeto.url = url;
 
-      axios.post('http://localhost:25575/api/Values/GetSingle/', objeto, state.optionAxios.headers)
+      axios.post(state.BaseUrl + '/Pokemon/GetSingle/', objeto, state.optionAxios.headers)
         .then((response) => {
           Pokemon.push(response.data);
           commit('SetPokemon', Pokemon);
