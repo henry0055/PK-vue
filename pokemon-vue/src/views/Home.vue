@@ -8,13 +8,13 @@
     </v-container>
 
     <v-container class="white lighten-5 mb-6">
-      <v-row no-gutters style="height: 100px;" >
-        <v-text-field v-model="busqueda" class="centered-input text--darken-  v-text-field"mt="0" hide-details="auto"></v-text-field>
+      <v-row no-gutters style="height: 100px;">
+        <v-text-field v-model="busqueda" class="centered-input text--darken-  v-text-field" mt="0" hide-details="auto"></v-text-field>
         <v-btn v-on:click="FiltrarPokemons(busqueda)" large color="info">Buscar</v-btn>
       </v-row>
       <v-container v-if="!seleccionado" justify="center">
-        <a class=" mr-8"   v-on:click="Seleccionar(item.url)" style="float:left" v-for="(item,n) in Pokemons" :key="n">
-          <img style="max-height: 100px;"  :src="''+item.image" @error="imgPlaceholder" >
+        <a class="mr-8" v-on:click="Seleccionar(item.url)" style="float:left" v-for="(item,n) in Pokemons" :key="n">
+          <img style="max-height: 100px;" :src="''+item.image" @error="imgPlaceholder" >
           <br>
           <a justify="center">{{item.name}}</a>
         </a>
@@ -28,13 +28,12 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+
 import Card from "@/components/Card.vue";
 import { mapActions, mapState } from "vuex";
 export default {
   name: "Home",
   components: {
-    HelloWorld,
     Card
   },
   created() {
