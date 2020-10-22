@@ -8,15 +8,11 @@ export default new Vuex.Store({
     Pokemons: [],
     SinglePokemon: [],
     seleccionado: false,
-    result: { url: 'dd', name: '', image: '' },
+    result: { url: '', name: '', image: '' },
     optionAxios: {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Credentials': 'true',
-        "crossorigin": "true",
-        "crossOrigin": "true",
-        "CrossOrigin": "true",
-        'crossDomain': 'true',
         'Access-Control-Allow-Methods': 'GET,POST,PATCH,PUT,DELETE'
       }
     }
@@ -36,13 +32,10 @@ export default new Vuex.Store({
       const Pokemons = [];
       axios.get('http://localhost:25575/api/Values/GetAll', null, state.optionAxios)
         .then((response) => {
-          console.log("GetRootObject :");
-          console.log(response.data);
 
           response.data.results.forEach((value, index) => {
             Pokemons.push(value);
           })
-          console.log(Pokemons);
           commit('SetPokemons', Pokemons);
         });
     },
@@ -50,29 +43,22 @@ export default new Vuex.Store({
       const Pokemons = [];
       axios.get('http://localhost:25575/api/Values/Filtrar/' + clave, state.optionAxios)
         .then((response) => {
-          console.log("GetRootObject :");
-          console.log(response.data);
 
           response.data.results.forEach((value, index) => {
             Pokemons.push(value);
           })
-          console.log(Pokemons);
           commit('SetPokemons', Pokemons);
         });
     },
     GetSinglePokemon({ commit, state }, url) {
-      console.log(url);
+
       const Pokemon = [];
-      let objeto = { url: url, name: 'ss', image: 'ss' };
+      let objeto = { url: url, name: '', image: '' };
       objeto.url = url;
-      console.log(objeto)
+
       axios.post('http://localhost:25575/api/Values/GetSingle/', objeto, state.optionAxios.headers)
         .then((response) => {
-          console.log("GetRootObject :");
-          console.log(response.data);
-
           Pokemon.push(response.data);
-
           commit('SetPokemon', Pokemon);
         });
     },

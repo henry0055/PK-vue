@@ -9,11 +9,11 @@
 
     <v-container class="white lighten-5 mb-6">
       <v-row no-gutters style="height: 100px;" >
-        <v-text-fieldv-model="busqueda"class="centered-input text--darken-  v-text-field"mt="0" hide-details="auto"></v-text-field>
+        <v-text-field v-model="busqueda" class="centered-input text--darken-  v-text-field"mt="0" hide-details="auto"></v-text-field>
         <v-btn v-on:click="FiltrarPokemons(busqueda)" large color="info">Buscar</v-btn>
       </v-row>
       <v-container justify="center">
-        <a v-if="!seleccionado" v-on:click="Seleccionar(item.url)" style="float:left" v-for="(item,index) in Pokemons" :key="index">
+        <a v-if="!seleccionado" v-on:click="Seleccionar(item.url)" style="float:left" v-for="(item,n) in Pokemons" :key="n">
           <img :src="''+item.image">
           <br>
           <a justify="center">{{item.name}}</a>
@@ -39,8 +39,7 @@ export default {
   },
   created() {
     this.GetRootObject();
-    console.log("----");
-    console.log(this.Pokemons);
+   
   },
   data() {
     return {

@@ -15,7 +15,7 @@
             </v-row>
         </v-list-item-content>
         <v-avatar size="120">
-        <img:src="''+SinglePokemon[0].sprites.front_default">
+        <img :src="''+SinglePokemon[0].sprites.front_default">
             </v-avatar>
         </v-list-item>
         <v-btn class="light-green--text text--darken-1" rounded text > Habilidades :  </v-btn>
@@ -25,10 +25,10 @@
         <v-btn  rounded text>{{SinglePokemon[0].species.name}} </v-btn>
         <br>
         <v-btn sm="8" class="indigo--text text--darken-1" rounded text  > Tipo :  </v-btn>
-        <v-btn  v-for="(item,index) in SinglePokemon[0].types" :key="index" rounded text>{{item.type.name}} </v-btn>
+        <v-btn  v-for="(item,i) in SinglePokemon[0].types" :key="'A'+i" rounded text>{{item.type.name}} </v-btn>
         <br>
         <v-btn sm="8" class="orange--text text--darken-1" rounded text  > Stats :  </v-btn>
-        <v-btn  v-for="(item,index) in SinglePokemon[0].stats" :key="index" rounded text>{{item.stat.name}} </v-btn>
+        <v-btn  v-for="(item,r) in SinglePokemon[0].stats" :key="'B'+r" rounded text>{{item.stat.name}} </v-btn>
             
         <v-row justify="center">
         <v-col></v-col>
